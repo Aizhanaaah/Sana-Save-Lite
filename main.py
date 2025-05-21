@@ -21,7 +21,7 @@ try:
 except json.JSONDecodeError:
     with open("wise_debug.log", "a") as log:
         log.write("Error decoding profiles response: " + response.text + "\n")
-    print("❌ Failed to decode profiles response. Check wise_debug.log.")
+    print("Failed to decode profiles response. Check wise_debug.log.")
     profiles = []
 
 profile_id = next((p['id'] for p in profiles if p['type'] == 'personal'), None)
@@ -35,7 +35,7 @@ if profile_id:
     except json.JSONDecodeError:
         with open("wise_debug.log", "a") as log:
             log.write("Error decoding borderless accounts response: " + response.text + "\n")
-        print("❌ Failed to decode borderless accounts response. Check wise_debug.log.")
+        print("Failed to decode borderless accounts response. Check wise_debug.log.")
 
 filename = 'transactions.csv'
 if not os.path.exists(filename):
@@ -60,7 +60,7 @@ if isinstance(borderless_accounts, list) and borderless_accounts:
     except json.JSONDecodeError:
         with open("wise_debug.log", "a") as log:
             log.write("Error decoding transactions response: " + response.text + "\n")
-        print("❌ Failed to decode transactions response. Check wise_debug.log.")
+        print("Failed to decode transactions response. Check wise_debug.log.")
         transactions = []
 
     if isinstance(transactions, list):
