@@ -74,13 +74,13 @@ if isinstance(borderless_accounts, list) and borderless_accounts:
                 tx_type = 'income' if amount > 0 else 'expense'
                 description = tx.get('details', {}).get('description', '') or 'unknown'
                 writer.writerow([date, tx_type, abs(amount), description])
-        print('✅ Wise transactions have been saved to CSV.')
+        print('Wise transactions have been saved to CSV.')
     else:
         with open("wise_debug.log", "a") as log:
             log.write("Unexpected transactions response format: " + str(transactions) + "\n")
-        print("⚠️ Transactions response is not a list. Check wise_debug.log.")
+        print("Transactions response is not a list. Check wise_debug.log.")
 else:
-    print("⚠️ No borderless accounts found.")
+    print("No borderless accounts found.")
 
 
 
@@ -250,3 +250,4 @@ show_means(df)
 check_expense_limit(df, limit=10000)
 saving_jar = add_transactions()
 print(f'your savings are: {saving_jar}')
+
